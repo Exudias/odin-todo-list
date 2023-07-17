@@ -6,6 +6,7 @@
     --color-background: #fef9c3;
     --color-highlight: #ca8a04;
     --color-text: #292524;
+    --color-text-light: #78716c;
 }
 
 * {
@@ -15,6 +16,10 @@
     box-sizing: border-box;
     -moz-box-sizing: border-box; 
     -webkit-box-sizing: border-box;
+}
+
+li {
+    list-style: none;
 }
 
 html,
@@ -127,7 +132,8 @@ body {
     border-color: var(--color-foreground-dark);
 }
 
-#add-button {
+#add-project-button,
+#add-task-button {
     font-size: 24px;
 }
 
@@ -135,6 +141,74 @@ body {
 .main-body {
     flex: 1;
 
+    display: flex;
+}
+
+.main-body-container {
+    width: 80%;
+
+    padding: 24px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.todo-item {
+    display: flex;
+
+    height: 32px;
+    align-items: center;
+
+    background-color: var(--color-foreground);
+}
+
+.todo-button-container {
+    flex: 32px 0 0;
+
+    height: 100%;
+}
+
+.todo-button {
+    height: 100%;
+    width: 32px;
+
+    border: 0;
+    background-color: var(--color-foreground-dark);
+
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.todo-button:hover {
+    background-color: var(--color-foreground-light);
+}
+
+.todo-button:active {
+    color: var(--color-text-light);
+}
+
+.todo-name {
+    flex: 1;
+
+    padding: 0 12px;
+    font-size: 24px;
+
+    white-space: nowrap;
+}
+
+.todo-date {
+    flex: 192px 0 0;
+
+    padding: 0 12px;
+    font-size: 18px;
+
+    text-align: right;
 }
 
 /* Header & Footer */
