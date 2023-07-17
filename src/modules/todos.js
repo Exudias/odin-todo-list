@@ -1,4 +1,4 @@
-import DateManager from "./dateManager";
+import {DateManager, CustomDate} from "./dateManager";
 
 class Todo {
     constructor(title, description, dueDate, priority, project)
@@ -22,22 +22,17 @@ class Todo {
 }
 
 class DataManager {
-    todos = [];
-    projects = [];
+    static todos = [];
+    static projects = [];
 
-    constructor(projects, todos)
+    static
     {
-        if (!projects)
-        {
-            this.projects = projects;
-        }
-        if (!todos)
-        {
-            this.todos = todos;
-        }
+        this.createTodo("Gimli");
+        this.createTodo("Gimli2");
+        this.createTodo("Gimli3");
     }
 
-    createProject(name)
+    static createProject(name)
     {
         if (!name)
         {
@@ -56,7 +51,7 @@ class DataManager {
         }
     }
 
-    createTodo(title, description, dueDate, priority, project)
+    static createTodo(title, description, dueDate, priority, project)
     {
         for (let i = 0; i < this.todos.length; i++)
         {
@@ -71,14 +66,39 @@ class DataManager {
         this.todos.push(todo);
     }
 
-    getTodosFromToday()
+    static getAllTodos()
     {
-
+        return this.todos;
     }
 
-    getTodosFromThisWeek()
+    static getTodosFromToday()
     {
+        let today = DateManager.getTodayDate();
 
+        let out = [];
+        for (let i = 0; i < this.todos.length; i++)
+        {
+            if (DateManager.areDatesEqual(today, this.todos[i].dueDate))
+            {
+                out.push(this.todos[i]);
+            }
+        }
+        return out;
+    }
+
+    static getTodosFromThisWeek()
+    {
+        let todayWeek = DateManager.getTodayWeek();
+
+        let out = [];
+        for (let i = 0; i < this.todos.length; i++)
+        {
+            if (this.todos[i].week === todayWeek)
+            {
+                out.push(this.todos[i]);
+            }
+        }
+        return out;
     }
 }
 

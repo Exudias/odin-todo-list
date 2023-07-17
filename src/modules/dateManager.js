@@ -1,14 +1,52 @@
-class DateManager
+class CustomDate
 {
-    getTodayDate()
+    constructor(day, month, year)
     {
+        this.day = day;
+        this.month = month;
+        this.year = year;
 
+        this.week = this.getWeekFromDate();
     }
 
-    getWeekNumberFromDate(date)
+    getWeekFromDate()
     {
+        let currentDate = new Date(this.year, this.month, this.day);
+        let beginningOfYear = new Date(this.year, 0, 1);
+        let days = Math.floor((currentDate - beginningOfYear) / (24 * 60 * 60 * 1000));
+        
+        let weekNumber = Math.ceil(days / 7);
+        
+        return weekNumber;
+    }
 
+    getStringFromDate()
+    {
+        let day = this.day.toString().padStart(2, "0");
+        let month = this.month.toString().padStart(2, "0");
+        return `${day}.${month} ${this.year}`;
     }
 }
 
-export default DateManager;
+class DateManager
+{
+    static getTodayDate()
+    {
+        let date = new Date();
+        return new CustomDate(date.getDay(), date.getMonth(), date.getFullYear());
+    }
+
+    static getTodayWeek()
+    {
+        return getTodayDate().getWeekFromDate();
+    }
+
+    static areDatesEqual(date1, date2)
+    {
+        return date1.day === date2.day && 
+               date1.month === date2.month && 
+               date1.year === date2.year;
+    }
+}
+
+export {DateManager, CustomDate};
