@@ -33,9 +33,9 @@ class DataManager {
     static loadData()
     {
         // Load dummy data for now
-        this.createTodo("Gimli1");
-        this.createTodo("Gimli2");
-        this.createTodo("Gimli3");
+        this.createTodo("Gimli1", "A dwarf's task 1", new CustomDate(17, 6, 2023), 2, "Dwarven Stuff");
+        this.createTodo("Gimli2", "A dwarf's task 2", new CustomDate(18, 6, 2023), 3, "Dwarven Stuff");
+        this.createTodo("Gimli3", "A dwarf's task 3", new CustomDate(24, 6, 2023), 4, "Elven Stuff");
     }
 
     static createProject(name)
@@ -86,6 +86,7 @@ class DataManager {
         {
             if (DateManager.areDatesEqual(today, this.todos[i].dueDate))
             {
+                
                 out.push(this.todos[i]);
             }
         }
@@ -99,7 +100,7 @@ class DataManager {
         let out = [];
         for (let i = 0; i < this.todos.length; i++)
         {
-            if (this.todos[i].week === todayWeek)
+            if (this.todos[i].dueDate.week === todayWeek)
             {
                 out.push(this.todos[i]);
             }

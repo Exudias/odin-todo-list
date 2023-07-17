@@ -15,6 +15,7 @@ const mainContainer = document.querySelector(".main-body-container");
 
 const mainHeading = document.querySelector(".main-body-container .panel-heading");
 const todoList = document.querySelector(".todo-list");
+const addTaskButton = document.querySelector("#add-task-button");
 
 const navManager = new NavManager(mainContainer, mainHeading, todoList);
 
@@ -25,25 +26,34 @@ const navManager = new NavManager(mainContainer, mainHeading, todoList);
 function loadAll()
 {
     navManager.loadAllPage();
+
     allButton.disabled = true;
     todayButton.disabled = false;
     weekButton.disabled = false;
+
+    addTaskButton.style.display = "block";
 }
 
 function loadToday()
 {
     navManager.loadTodayPage();
+
     allButton.disabled = false;
     todayButton.disabled = true;
     weekButton.disabled = false;
+
+    addTaskButton.style.display = "none";
 }
 
 function loadWeek()
 {
     navManager.loadWeekPage();
+
     allButton.disabled = false;
     todayButton.disabled = false;
     weekButton.disabled = true;
+
+    addTaskButton.style.display = "none";
 }
 
 allButton.onclick = loadAll;
