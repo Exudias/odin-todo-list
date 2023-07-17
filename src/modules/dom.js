@@ -29,7 +29,7 @@ class DomManager
         const todoRemoveButtonContainer = createTodoButtonContainer("X");
         li.appendChild(todoRemoveButtonContainer);
 
-        return li;
+        return {li, todoCompleteButtonContainer, todoRemoveButtonContainer};
 
         function createTodoButtonContainer(buttonText)
         {
