@@ -48,33 +48,37 @@
         <div class="panel-heading">
             Create Task
         </div>
-        <div class="input-pair">
-            <label for="task-name">Name</label>
-            <input id="task-name" type="text" placeholder="Task name">
-        </div>
-        <div class="input-pair">
-            <label for="task-description">Description</label>
-            <input id="task-description" type="text" placeholder="Task description">
-        </div>
-        <div class="input-pair">
-            <label for="task-date">Due</label>
-            <input id="task-date" type="date">
-        </div>
-        <div class="submit-div">
-            <button class="submit-button" id="task-submit">Submit</button>
-        </div>
+        <form method="post" action="" id="task-form">
+            <div class="input-pair">
+                <label for="task-name">Name</label>
+                <input id="task-name" type="text" placeholder="Task name">
+            </div>
+            <div class="input-pair">
+                <label for="task-description">Description</label>
+                <input id="task-description" type="text" placeholder="Task description">
+            </div>
+            <div class="input-pair">
+                <label for="task-date">Due</label>
+                <input id="task-date" type="date">
+            </div>
+            <div class="submit-div">
+                <button class="submit-button" id="task-submit">Submit</button>
+            </div>
+        </form>
     </div>
     <div class="create-project-window">
         <div class="panel-heading">
             Create Project
         </div>
-        <div class="input-pair">
-            <label for="project-name">Name</label>
-            <input id="project-name" type="text" placeholder="Project name">
-        </div>
-        <div class="submit-div">
-            <button class="submit-button" id="project-submit">Submit</button>
-        </div>
+        <form method="post" action="" id="project-form">
+            <div class="input-pair">
+                <label for="project-name">Name</label>
+                <input id="project-name" type="text" placeholder="Project name">
+            </div>
+            <div class="submit-div">
+                <button class="submit-button" id="project-submit">Submit</button>
+            </div>
+        </form>
     </div>
 </body>
 </html>

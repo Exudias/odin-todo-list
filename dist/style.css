@@ -298,8 +298,8 @@ button.nav-button {
     padding: 4px;
 }
 
-.create-task-window > *,
-.create-project-window > * {
+.create-task-window > *:first-child,
+.create-project-window > *:first-child {
     height: 64px;
 }
 
@@ -348,4 +348,10 @@ button.nav-button {
 
 .input-pair input::placeholder {
     font-size: 18px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
