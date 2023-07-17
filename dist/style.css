@@ -298,16 +298,13 @@ button.nav-button {
     padding: 4px;
 }
 
-.create-task-window {
-    height: 384px;
-}
-
-.create-project-window {
-    height: 128px;
+.create-task-window > *,
+.create-project-window > * {
+    height: 64px;
 }
 
 .submit-button {
-    height: 64px;
+    height: 48px;
     width: 128px;
 
     border: 0;
