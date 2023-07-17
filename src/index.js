@@ -1,4 +1,5 @@
 import DomManager from './modules/dom.js';
+import NavManager from './modules/nav.js';
 
 // DOM References
 const allButton = document.querySelector("#all-button");
@@ -12,7 +13,5 @@ const projectsList = document.querySelector(".projects-list");
 const mainContainer = document.querySelector(".main-body-container");
 
 (function() {
-    projectsList.appendChild(DomManager.createNavButton("Gimli 1"));
-    projectsList.appendChild(DomManager.createNavButton("Gimli 2"));
-    projectsList.appendChild(DomManager.createNavButton("Gimli 3"));
+
 })();
