@@ -27,7 +27,13 @@ class DataManager {
 
     static
     {
-        this.createTodo("Gimli");
+        this.loadData();
+    }
+
+    static loadData()
+    {
+        // Load dummy data for now
+        this.createTodo("Gimli1");
         this.createTodo("Gimli2");
         this.createTodo("Gimli3");
     }
@@ -99,6 +105,17 @@ class DataManager {
             }
         }
         return out;
+    }
+
+    static removeTodo(name)
+    {
+        for (let i = 0; i < this.todos.length; i++)
+        {
+            if (this.todos[i].title === name)
+            {
+                this.todos.splice(i, 1);
+            }
+        }
     }
 }
 

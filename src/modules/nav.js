@@ -17,7 +17,15 @@ class NavManager
 
         const todos = DataManager.getAllTodos();
         todos.forEach(todo => {
-            const {li, complete, remove} = DomManager.createTodoItem(todo.title);
+            const {li, todoCompleteButtonContainer, todoRemoveButtonContainer} = DomManager.createTodoItem(todo.title);
+            todoCompleteButtonContainer.onclick = () => {
+                this.todoList.removeChild(li);
+                DataManager.removeTodo(todo.title);
+            }
+            todoRemoveButtonContainer.onclick = () => {
+                this.todoList.removeChild(li);
+                DataManager.removeTodo(todo.title);
+            }
             this.todoList.appendChild(li);
         });
     }
