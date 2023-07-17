@@ -80,14 +80,23 @@ body {
     height: 48px;
     
     line-height: 48px;
+    
+    background-color: transparent;
 
+    border: 0;
     border-radius: 4px;
-    border-left: 4px solid var(--color-highlight);
+    border-left: 4px solid var(--color-highlight);  
+
+    text-align: left;
 
     /* Prevent text selection */
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
+}
+
+button.nav-button {
+    font-size: 24px;
 }
 
 .nav-button:hover {
@@ -99,6 +108,7 @@ body {
     background-color: var(--color-foreground-light);
     cursor: pointer;
     font-weight: bold;
+    color: var(--color-text);
 }
 
 .projects-list-container {
@@ -207,13 +217,13 @@ body {
     white-space: nowrap;
 }
 
-.todo-item:hover,
-.todo-item:hover + .todo-date {
+.todo-name:hover,
+.todo-name:hover + .todo-date {
     background-color: var(--color-foreground-light);
 }
 
-.todo-item:active,
-.todo-item:active + .todo-date {
+.todo-name:active,
+.todo-name:active + .todo-date {
     color: var(--color-text-light);
 }
 
@@ -222,6 +232,8 @@ body {
 
     padding: 0 12px;
     font-size: 18px;
+    height: 100%;
+    line-height: 32px;
 
     text-align: right;
 }
