@@ -19,9 +19,28 @@ const addTaskButton = document.querySelector("#add-task-button");
 
 const navManager = new NavManager(mainContainer, mainHeading, todoList);
 
+const createTaskWindow = document.querySelector(".create-task-window");
+const createProjectWindow = document.querySelector(".create-project-window");
+
 (function() {
     loadAll();
 })();
+
+addTaskButton.onclick = () => {
+    DomManager.showOverlayWindow(createTaskWindow);
+};
+
+addProjectButton.onclick = () => {
+    DomManager.showOverlayWindow(createProjectWindow);
+}
+
+createTaskWindow.onclick = (e) => {
+    e.stopPropagation();
+}
+
+createProjectWindow.onclick = (e) => {
+    e.stopPropagation();
+}
 
 function loadAll()
 {

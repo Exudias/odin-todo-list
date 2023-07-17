@@ -1,5 +1,30 @@
+const dimmer = document.querySelector(".dimmer");
+
+dimmer.onclick = (e) => {
+    e.stopPropagation();
+    DomManager.hideOverlayWindow();
+}
+
 class DomManager
 {
+    static openOverlay = null;
+
+    static showOverlayWindow = (windowNode) =>
+    {
+        dimmer.style.display = "block";
+        windowNode.style.display = "flex";
+        this.openOverlay = windowNode;
+    }
+
+    static hideOverlayWindow = () =>
+    {
+        dimmer.style.display = "none";
+        if (this.openOverlay)
+        {
+            this.openOverlay.style.display = "none";
+        }
+    }
+
     static createNavButton(text)
     {
         const li = document.createElement("li");
