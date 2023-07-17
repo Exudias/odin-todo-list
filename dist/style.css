@@ -166,6 +166,11 @@ body {
     align-items: center;
 
     background-color: var(--color-foreground);
+
+    /* Prevent text selection */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 .todo-button-container {
@@ -200,6 +205,16 @@ body {
     font-size: 24px;
 
     white-space: nowrap;
+}
+
+.todo-item:hover,
+.todo-item:hover + .todo-date {
+    background-color: var(--color-foreground-light);
+}
+
+.todo-item:active,
+.todo-item:active + .todo-date {
+    color: var(--color-text-light);
 }
 
 .todo-date {
