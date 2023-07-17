@@ -1,0 +1,26 @@
+{
+  "name": "odin-todo-list",
+  "version": "1.0.0",
+  "description": "ODP Project: Todo List",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --open",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Exudias/odin-todo-list.git"
+  },
+  "author": "Exudias <edward.sarkisyan123@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Exudias/odin-todo-list/issues"
+  },
+  "homepage": "https://github.com/Exudias/odin-todo-list#readme",
+  "devDependencies": {
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
