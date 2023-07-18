@@ -44,7 +44,7 @@ class NavManager
                     DataManager.removeProject(projectName);
                     this.loadTodos();
                     this.loadProjects();
-                    this.loadAllPage();
+                    DomManager.loadAllPage();
                 }
             }
             this.projectList.appendChild(btn);
