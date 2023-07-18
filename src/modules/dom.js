@@ -206,7 +206,7 @@ class DomManager
         return li;
     }
 
-    static createTodoItem(name, date, project)
+    static createTodoItem(name, description, date, project)
     {
         const li = document.createElement("li");;
         li.className = "todo-item";
@@ -216,6 +216,7 @@ class DomManager
 
         const todoName = document.createElement("div");
         todoName.className = "todo-name";
+        todoName.title = description;
         todoName.textContent = `${name} (${project})`;
         li.appendChild(todoName);
 
