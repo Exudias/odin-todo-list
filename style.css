@@ -76,6 +76,8 @@ body {
 }
 
 .nav-button {
+    position: relative;
+
     padding: 0 4px;
     height: 48px;
     
@@ -359,4 +361,32 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.nav-button:hover .project-delete-button {
+    display: block;
+}
+
+.project-delete-button {
+    display: none;
+    position: absolute;
+
+    height: 80%;
+    aspect-ratio: 1 / 1;
+
+    right: 0;
+    top: calc(10%);
+
+    border: 0;
+    font-size: 24px;
+
+    background-color: transparent;
+}
+
+.project-delete-button:hover {
+    color: var(--color-text-light);
+}
+
+.project-delete-button:active {
+    color: transparent;
 }
