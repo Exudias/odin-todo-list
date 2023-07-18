@@ -32,15 +32,19 @@ class DataManager {
 
     static loadData()
     {
-        // Load dummy data for now
-        this.createTodo("Gimli1", "A dwarf's task 1", new CustomDate(17, 6, 2023), 2, "Dwarven Stuff");
-        this.createTodo("Gimli2", "A dwarf's task 2", new CustomDate(18, 6, 2023), 3, "Dwarven Stuff");
-        this.createTodo("Gimli3", "A dwarf's task 3", new CustomDate(24, 6, 2023), 4, "Elven Stuff");
+        // TODO: Load in projects from storage
 
         if (this.projects.length === 0)
         {
             this.projects = ["New Project"];
         }
+
+        // TODO: Load in todos from storage
+
+        // Load dummy data for now
+        this.createTodo("Gimli1", "A dwarf's task 1", new CustomDate(17, 6, 2023), 2, this.projects[0]);
+        this.createTodo("Gimli2", "A dwarf's task 2", new CustomDate(18, 6, 2023), 3, this.projects[0]);
+        this.createTodo("Gimli3", "A dwarf's task 3", new CustomDate(24, 6, 2023), 4, this.projects[0]);
     }
 
     static createProject(name)
@@ -116,6 +120,19 @@ class DataManager {
         for (let i = 0; i < this.todos.length; i++)
         {
             if (this.todos[i].dueDate.week === todayWeek)
+            {
+                out.push(this.todos[i]);
+            }
+        }
+        return out;
+    }
+
+    static getTodosFromProject(projectName)
+    {
+        let out = [];
+        for (let i = 0; i < this.todos.length; i++)
+        {
+            if (this.todos[i].project === projectName)
             {
                 out.push(this.todos[i]);
             }

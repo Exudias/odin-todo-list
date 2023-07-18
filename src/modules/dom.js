@@ -138,6 +138,15 @@ class DomManager
         this.addTaskButton.style.display = "none";
     }
 
+    static loadProjectPage()
+    {
+        this.allButton.disabled = false;
+        this.todayButton.disabled = false;
+        this.weekButton.disabled = false;
+
+        this.addTaskButton.style.display = "block";
+    }
+
     static showOverlayWindow = (windowNode) =>
     {
         this.dimmer.style.display = "block";
@@ -170,13 +179,13 @@ class DomManager
 
     static createNavButton(text)
     {
-        const li = document.createElement("li");
+        const li = document.createElement("button");
         li.textContent = text;
         li.className = "nav-button";
         return li;
     }
 
-    static createTodoItem(name, date)
+    static createTodoItem(name, date, project)
     {
         const li = document.createElement("li");;
         li.className = "todo-item";
@@ -186,7 +195,7 @@ class DomManager
 
         const todoName = document.createElement("div");
         todoName.className = "todo-name";
-        todoName.textContent = name;
+        todoName.textContent = `${name} (${project})`;
         li.appendChild(todoName);
 
         const todoDate = document.createElement("div");
@@ -211,6 +220,13 @@ class DomManager
             todoButtonContainer.appendChild(btn);
             return todoButtonContainer;
         }
+    }
+
+    static enableAllPrimaryButtons()
+    {
+        this.allButton.disabled = false;
+        this.todayButton.disabled = false;
+        this.weekButton.disabled = false;
     }
 }
 

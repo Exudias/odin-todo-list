@@ -11,6 +11,8 @@ class NavManager
         this.heading = heading;
         this.todoList = todoList;
         this.projectList = projectList;
+
+        this.projectButtons = [];
     }
 
     loadProjects()
@@ -18,12 +20,20 @@ class NavManager
         let projects = DataManager.getAllProjects();
         this.projectList.innerHTML = "";
         projects.forEach(projectName => {
-            let btn = DomManager.createNavButton(projectName)
+            let btn = DomManager.createNavButton(projectName);
+            btn.onclick = () => {
+                this.loadProjectPage(projectName);
+                this.projectButtons.forEach(button => {
+                    button.disabled = false;
+                });
+                btn.disabled = true;
+            };
             this.projectList.appendChild(btn);
+            this.projectButtons.push(btn);
         });
     }
 
-    loadTodos()
+    loadTodos(projectName)
     {
         if (this.currentPage === "All")
         {
@@ -39,7 +49,7 @@ class NavManager
         }
         else if (this.currentPage === "Project")
         {
-            console.log("Loading project stuff...");
+            this.loadAndAssignTodosFromList(DataManager.getTodosFromProject(projectName));
         }
         else
         {
@@ -51,7 +61,7 @@ class NavManager
     {
         this.todoList.innerHTML = "";
         todos.forEach(todo => {
-            const {li, todoCompleteButtonContainer, todoRemoveButtonContainer} = DomManager.createTodoItem(todo.title, todo.dueDate);
+            const {li, todoCompleteButtonContainer, todoRemoveButtonContainer} = DomManager.createTodoItem(todo.title, todo.dueDate, todo.project);
             todoCompleteButtonContainer.onclick = () => {
                 this.todoList.removeChild(li);
                 DataManager.removeTodo(todo.title);
@@ -92,9 +102,9 @@ class NavManager
     {
         this.currentPage = "Project";
         this.heading.textContent = `${name}'s todos`;
-        this.todoList.innerHTML = "";
 
-        this.loadTodos();
+        this.loadTodos(name);
+        DomManager.loadProjectPage();
     }
 }
 
