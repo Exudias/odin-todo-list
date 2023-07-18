@@ -36,6 +36,11 @@ class DataManager {
         this.createTodo("Gimli1", "A dwarf's task 1", new CustomDate(17, 6, 2023), 2, "Dwarven Stuff");
         this.createTodo("Gimli2", "A dwarf's task 2", new CustomDate(18, 6, 2023), 3, "Dwarven Stuff");
         this.createTodo("Gimli3", "A dwarf's task 3", new CustomDate(24, 6, 2023), 4, "Elven Stuff");
+
+        if (this.projects.length === 0)
+        {
+            this.projects = ["New Project"];
+        }
     }
 
     static createProject(name)
@@ -75,12 +80,16 @@ class DataManager {
 
         let todo = new Todo(title, description, dueDate, priority, project);
         this.todos.push(todo);
-        console.log(this.todos);
     }
 
     static getAllTodos()
     {
         return this.todos;
+    }
+
+    static getAllProjects()
+    {
+        return this.projects;
     }
 
     static getTodosFromToday()

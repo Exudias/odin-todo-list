@@ -32,8 +32,8 @@ class CustomDate
     getStringFromDate()
     {
         let day = this.day.toString().padStart(2, "0");
-        let month = this.month.toString().padStart(2, "0");
-        return `${day}.${month} ${this.year}`;
+        let month = (this.month + 1).toString().padStart(2, "0");
+        return `${day}/${month}/${this.year}`;
     }
 }
 
