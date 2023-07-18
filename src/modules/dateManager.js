@@ -29,11 +29,11 @@ class CustomDate
         return weekNumber;
     }
 
-    getStringFromDate()
+    static getStringFromDate(date)
     {
-        let day = this.day.toString().padStart(2, "0");
-        let month = (this.month + 1).toString().padStart(2, "0");
-        return `${day}/${month}/${this.year}`;
+        let day = date.day.toString().padStart(2, "0");
+        let month = (date.month + 1).toString().padStart(2, "0");
+        return `${day}/${month}/${date.year}`;
     }
 }
 

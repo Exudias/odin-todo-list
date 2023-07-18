@@ -33,19 +33,22 @@ class DataManager {
 
     static loadData()
     {
-        // TODO: Load in projects from storage
+        this.projects = JSON.parse(window.localStorage.getItem("projects"));
 
-        if (this.projects.length === 0)
+        if (!this.projects || this.projects.length === 0)
         {
             this.projects = ["New Project"];
+            window.localStorage.setItem("projects", JSON.stringify(this.projects));
         }
 
-        // TODO: Load in todos from storage
+        this.todos = JSON.parse(window.localStorage.getItem("todos"));
+        if (!this.todos)
+        {
+            this.todos = [];
+        }
 
-        // Load dummy data for now
-        this.createTodo("Gimli1", "A dwarf's task 1", new CustomDate(17, 6, 2023), "1", this.projects[0]);
-        this.createTodo("Gimli2", "A dwarf's task 2", new CustomDate(18, 6, 2023), "2", this.projects[0]);
-        this.createTodo("Gimli3", "A dwarf's task 3", new CustomDate(24, 6, 2023), "0", this.projects[0]);
+        console.log(this.projects);
+        console.log(this.todos);
     }
 
     static createProject(name)
@@ -59,6 +62,7 @@ class DataManager {
             else
             {
                 this.projects.push(name);
+                window.localStorage.setItem("projects", JSON.stringify(this.projects));
             }
         }
         else
@@ -86,6 +90,7 @@ class DataManager {
 
         let todo = new Todo(title, description, dueDate, priority, project);
         this.todos.push(todo);
+        window.localStorage.setItem("todos", JSON.stringify(this.todos));
     }
 
     static getAllTodos()
@@ -167,6 +172,7 @@ class DataManager {
         if (this.projects.length === 0)
         {
             this.projects.push("New Project");
+            window.localStorage.setItem("projects", JSON.stringify(this.projects));
         }
 
         let newTodos = [];
@@ -178,6 +184,7 @@ class DataManager {
             }
         }
         this.todos = newTodos;
+        window.localStorage.setItem("todos", JSON.stringify(this.todos));
         DomManager.resetTaskProject();
     }
 }

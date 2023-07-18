@@ -83,8 +83,12 @@ class NavManager
     loadAndAssignTodosFromList(todos)
     {
         this.todoList.innerHTML = "";
+        if (!todos || todos.length === 0)
+        {
+            return;
+        }
         let sorted = todos.sort((a, b) => a.priority > b.priority ? -1 : 1);
-        todos.forEach(todo => {
+        sorted.forEach(todo => {
             const {li, todoCompleteButtonContainer} = DomManager.createTodoItem(todo.title, todo.description, todo.dueDate, todo.project);
             todoCompleteButtonContainer.onclick = () => {
                 this.todoList.removeChild(li);

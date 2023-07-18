@@ -1,5 +1,6 @@
 import DataManager from "./todos";
 import NavManager from "./nav";
+import { CustomDate } from "./dateManager";
 
 class DomManager
 {
@@ -222,7 +223,7 @@ class DomManager
 
         const todoDate = document.createElement("div");
         todoDate.className = "todo-date";
-        todoDate.textContent = date.getStringFromDate();
+        todoDate.textContent = CustomDate.getStringFromDate(date);
         li.appendChild(todoDate);
 
         return {li, todoCompleteButtonContainer};
