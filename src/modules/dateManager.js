@@ -9,6 +9,15 @@ class CustomDate
         this.week = this.getWeekFromDate();
     }
 
+    static createFromDateObject(date)
+    {
+        if (!date)
+        {
+            date = new Date();
+        }
+        return new CustomDate(date.getDate(), date.getMonth(), date.getFullYear());
+    }
+
     getWeekFromDate()
     {
         let currentDate = new Date(this.year, this.month, this.day, new Date().getHours(), new Date().getMinutes());

@@ -1,28 +1,77 @@
-const dimmer = document.querySelector(".dimmer");
-
-dimmer.onclick = (e) => {
-    e.stopPropagation();
-    DomManager.hideOverlayWindow();
-}
+import DataManager from "./todos";
 
 class DomManager
 {
     static openOverlay = null;
 
+    static 
+    {
+        this.loadDOMReferences();
+        this.assignDOMEvents();
+    }
+
+    static loadDOMReferences()
+    {
+        this.dimmer = document.querySelector(".dimmer");
+        this.taskForm = document.querySelector("#task-form");
+        this.projectForm = document.querySelector("#project-form");
+    }
+
+    static assignDOMEvents()
+    {
+        this.dimmer.onclick = (e) => {
+            e.stopPropagation();
+            DomManager.hideOverlayWindow();
+        };
+
+        this.taskForm.onsubmit = (e) => {
+            e.preventDefault();
+            const formValid = this.taskForm.reportValidity();
+            if (formValid)
+            {
+                const formValues = DomManager.getFormValues(this.taskForm);
+        
+                DataManager.createTodo(formValues.title, formValues.description, formValues.date, 0, "");
+            }
+        };
+
+        this.projectForm.onsubmit = (e) => {
+            e.preventDefault();
+            const formValid = this.projectForm.reportValidity();
+            if (formValid)
+            {
+                const formValues = DomManager.getFormValues(this.projectForm);
+        
+                DataManager.createProject(formValues.title);
+            }
+        };
+    }
+
     static showOverlayWindow = (windowNode) =>
     {
-        dimmer.style.display = "block";
+        this.dimmer.style.display = "block";
         windowNode.style.display = "flex";
         this.openOverlay = windowNode;
     }
 
     static hideOverlayWindow = () =>
     {
-        dimmer.style.display = "none";
+        this.dimmer.style.display = "none";
         if (this.openOverlay)
         {
             this.openOverlay.style.display = "none";
         }
+    }
+
+    static getFormValues(form)
+    {
+        const data = new FormData(form);
+        let res = {};
+        for (const [key, value] of data)
+        {
+            res[key] = value;
+        }
+        return res;
     }
 
     static createNavButton(text)

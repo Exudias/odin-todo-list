@@ -48,21 +48,21 @@
         <div class="panel-heading">
             Create Task
         </div>
-        <form method="post" action="" id="task-form">
+        <form id="task-form">
             <div class="input-pair">
-                <label for="task-name">Name</label>
-                <input id="task-name" type="text" placeholder="Task name">
+                <label for="task-name">Name*</label>
+                <input name="title" id="task-name" type="text" placeholder="Task name" required>
             </div>
             <div class="input-pair">
                 <label for="task-description">Description</label>
-                <input id="task-description" type="text" placeholder="Task description">
+                <input name="description" id="task-description" type="text" placeholder="Task description">
             </div>
             <div class="input-pair">
                 <label for="task-date">Due</label>
-                <input id="task-date" type="date">
+                <input name="date" id="task-date" type="date">
             </div>
             <div class="submit-div">
-                <button class="submit-button" id="task-submit">Submit</button>
+                <input type="submit" class="submit-button" id="task-submit" value="Submit">
             </div>
         </form>
     </div>
@@ -70,13 +70,13 @@
         <div class="panel-heading">
             Create Project
         </div>
-        <form method="post" action="" id="project-form">
+        <form id="project-form">
             <div class="input-pair">
-                <label for="project-name">Name</label>
-                <input id="project-name" type="text" placeholder="Project name">
+                <label for="project-name">Name*</label>
+                <input name="title" id="project-name" type="text" placeholder="Project name" required>
             </div>
             <div class="submit-div">
-                <button class="submit-button" id="project-submit">Submit</button>
+                <input type="submit" class="submit-button" id="project-submit" value="Submit">
             </div>
         </form>
     </div>

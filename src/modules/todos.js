@@ -40,7 +40,7 @@ class DataManager {
 
     static createProject(name)
     {
-        if (!name)
+        if (name)
         {
             if (this.projects.includes(name))
             {
@@ -68,8 +68,14 @@ class DataManager {
             }
         }
 
+        if (!(dueDate instanceof CustomDate))
+        {
+            dueDate = CustomDate.createFromDateObject(dueDate);
+        }
+
         let todo = new Todo(title, description, dueDate, priority, project);
         this.todos.push(todo);
+        console.log(this.todos);
     }
 
     static getAllTodos()

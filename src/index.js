@@ -17,10 +17,10 @@ const mainHeading = document.querySelector(".main-body-container .panel-heading"
 const todoList = document.querySelector(".todo-list");
 const addTaskButton = document.querySelector("#add-task-button");
 
-const navManager = new NavManager(mainContainer, mainHeading, todoList);
-
 const createTaskWindow = document.querySelector(".create-task-window");
 const createProjectWindow = document.querySelector(".create-project-window");
+
+const navManager = new NavManager(mainContainer, mainHeading, todoList);
 
 (function() {
     loadAll();

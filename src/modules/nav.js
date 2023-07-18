@@ -13,13 +13,13 @@ class NavManager
     loadAllPage()
     {
         this.heading.textContent = "All tasks";
-        this.todoList.innerHTML = "";
 
         this.loadAndAssignTodosFromList(DataManager.getAllTodos());
     }
 
     loadAndAssignTodosFromList(todos)
     {
+        this.todoList.innerHTML = "";
         todos.forEach(todo => {
             const {li, todoCompleteButtonContainer, todoRemoveButtonContainer} = DomManager.createTodoItem(todo.title);
             todoCompleteButtonContainer.onclick = () => {
@@ -37,7 +37,6 @@ class NavManager
     loadTodayPage()
     {
         this.heading.textContent = "Today's tasks";
-        this.todoList.innerHTML = "";
 
         this.loadAndAssignTodosFromList(DataManager.getTodosFromToday());
     }
@@ -45,7 +44,6 @@ class NavManager
     loadWeekPage()
     {
         this.heading.textContent = "This week's tasks";
-        this.todoList.innerHTML = "";
 
         this.loadAndAssignTodosFromList(DataManager.getTodosFromThisWeek());
     }
