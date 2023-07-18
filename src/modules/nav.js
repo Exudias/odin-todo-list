@@ -4,6 +4,7 @@ import DataManager from "./todos";
 class NavManager
 {
     currentPage;
+    currentProject;
 
     constructor(container, heading, todoList, projectList)
     {
@@ -35,6 +36,10 @@ class NavManager
 
     loadTodos(projectName)
     {
+        if (projectName)
+        {
+            this.currentProject = projectName;
+        }
         if (this.currentPage === "All")
         {
             this.loadAndAssignTodosFromList(DataManager.getAllTodos());
@@ -49,7 +54,7 @@ class NavManager
         }
         else if (this.currentPage === "Project")
         {
-            this.loadAndAssignTodosFromList(DataManager.getTodosFromProject(projectName));
+            this.loadAndAssignTodosFromList(DataManager.getTodosFromProject(this.currentProject));
         }
         else
         {

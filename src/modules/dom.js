@@ -36,9 +36,11 @@ class DomManager
 
         this.createTaskWindow = document.querySelector(".create-task-window");
         this.taskDate = document.querySelector("#task-date");
+        this.taskProject = document.querySelector("#task-project");
         this.createProjectWindow = document.querySelector(".create-project-window");
 
         this.resetTaskDate();
+        this.resetTaskProject();
     }
 
     static resetTaskDate()
@@ -46,6 +48,24 @@ class DomManager
         let today = new Date().toISOString().split("T")[0];
         this.taskDate.min = today;
         this.taskDate.value = today;
+    }
+
+    static resetTaskProject()
+    {
+        let projects = DataManager.getAllProjects();
+        this.taskProject.innerHTML = "";
+        projects.forEach(project => {
+            this.taskProject.appendChild(this.createOption(project));
+        });
+        this.taskProject.children[0].selected = true;
+    }
+
+    static createOption(value)
+    {
+        let opt = document.createElement("option");
+        opt.value = value;
+        opt.textContent = value;
+        return opt;
     }
 
     static assignDOMEvents()
@@ -62,7 +82,7 @@ class DomManager
             {
                 const formValues = DomManager.getFormValues(this.taskForm);
         
-                DataManager.createTodo(formValues.title, formValues.description, new Date(formValues.date), 0, "");
+                DataManager.createTodo(formValues.title, formValues.description, new Date(formValues.date), 0, formValues.project);
                 this.navManager.loadTodos();
                 this.hideOverlayWindow();
             }
@@ -164,6 +184,7 @@ class DomManager
         this.taskForm.reset();
         this.projectForm.reset();
         this.resetTaskDate();
+        this.resetTaskProject();
     }
 
     static getFormValues(form)
