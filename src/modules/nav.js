@@ -20,15 +20,33 @@ class NavManager
     {
         let projects = DataManager.getAllProjects();
         this.projectList.innerHTML = "";
+        this.projectButtons = [];
         projects.forEach(projectName => {
             let btn = DomManager.createNavButton(projectName);
             btn.onclick = () => {
                 this.loadProjectPage(projectName);
                 this.projectButtons.forEach(button => {
-                    button.disabled = false;
+                    if (button)
+                    {
+                        button.disabled = false;
+                    }
                 });
                 btn.disabled = true;
             };
+            let btnRemove = document.createElement("button");
+            btnRemove.className = "project-delete-button";
+            btnRemove.textContent = "X";
+            btn.appendChild(btnRemove);
+            btnRemove.onclick = (e) => {
+                e.stopPropagation();
+                if (DataManager.getAllProjects().length > 1)
+                {
+                    DataManager.removeProject(projectName);
+                    this.loadTodos();
+                    this.loadProjects();
+                    this.loadAllPage();
+                }
+            }
             this.projectList.appendChild(btn);
             this.projectButtons.push(btn);
         });
@@ -58,7 +76,7 @@ class NavManager
         }
         else
         {
-            console.log("Loading error page todos!");
+            console.log("[ERROR]: Loading todos for unknown page!");
         }
     }
 

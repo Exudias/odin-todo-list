@@ -1,4 +1,5 @@
 import {DateManager, CustomDate} from "./dateManager";
+import DomManager from "./dom";
 
 class Todo {
     constructor(title, description, dueDate, priority, project)
@@ -64,6 +65,7 @@ class DataManager {
         {
             alert("Invalid project name!");
         }
+        DomManager.resetTaskProject();
     }
 
     static createTodo(title, description, dueDate, priority, project)
@@ -147,8 +149,36 @@ class DataManager {
             if (this.todos[i].title === name)
             {
                 this.todos.splice(i, 1);
+                break;
             }
         }
+    }
+
+    static removeProject(name)
+    {
+        for (let i = 0; i < this.projects.length; i++)
+        {
+            if (this.projects[i] === name)
+            {
+                this.projects.splice(i, 1);
+            }
+        }
+
+        if (this.projects.length === 0)
+        {
+            this.projects.push("New Project");
+        }
+
+        let newTodos = [];
+        for (let i = 0; i < this.todos.length; i++)
+        {
+            if (this.todos[i].project !== name)
+            {
+                newTodos.push(this.todos[i]);
+            }
+        }
+        this.todos = newTodos;
+        DomManager.resetTaskProject();
     }
 }
 
