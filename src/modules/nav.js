@@ -83,16 +83,16 @@ class NavManager
     loadAndAssignTodosFromList(todos)
     {
         this.todoList.innerHTML = "";
+        let sorted = todos.sort((a, b) => a.priority > b.priority ? -1 : 1);
         todos.forEach(todo => {
-            const {li, todoCompleteButtonContainer, todoRemoveButtonContainer} = DomManager.createTodoItem(todo.title, todo.dueDate, todo.project);
+            const {li, todoCompleteButtonContainer} = DomManager.createTodoItem(todo.title, todo.dueDate, todo.project);
             todoCompleteButtonContainer.onclick = () => {
                 this.todoList.removeChild(li);
                 DataManager.removeTodo(todo.title);
             }
-            todoRemoveButtonContainer.onclick = () => {
-                this.todoList.removeChild(li);
-                DataManager.removeTodo(todo.title);
-            }
+            let priorityClass = todo.priority === "0" ? "green" : (todo.priority === "1" ? "orange" : "red");
+            todoCompleteButtonContainer.children[0].classList.add(priorityClass);
+
             this.todoList.appendChild(li);
         });
     }

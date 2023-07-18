@@ -82,7 +82,7 @@ class DomManager
             {
                 const formValues = DomManager.getFormValues(this.taskForm);
         
-                DataManager.createTodo(formValues.title, formValues.description, new Date(formValues.date), 0, formValues.project);
+                DataManager.createTodo(formValues.title, formValues.description, new Date(formValues.date), formValues.priority, formValues.project);
                 this.navManager.loadTodos();
                 this.hideOverlayWindow();
             }
@@ -224,10 +224,7 @@ class DomManager
         todoDate.textContent = date.getStringFromDate();
         li.appendChild(todoDate);
 
-        const todoRemoveButtonContainer = createTodoButtonContainer("X");
-        li.appendChild(todoRemoveButtonContainer);
-
-        return {li, todoCompleteButtonContainer, todoRemoveButtonContainer};
+        return {li, todoCompleteButtonContainer};
 
         function createTodoButtonContainer(buttonText)
         {

@@ -43,9 +43,9 @@ class DataManager {
         // TODO: Load in todos from storage
 
         // Load dummy data for now
-        this.createTodo("Gimli1", "A dwarf's task 1", new CustomDate(17, 6, 2023), 2, this.projects[0]);
-        this.createTodo("Gimli2", "A dwarf's task 2", new CustomDate(18, 6, 2023), 3, this.projects[0]);
-        this.createTodo("Gimli3", "A dwarf's task 3", new CustomDate(24, 6, 2023), 4, this.projects[0]);
+        this.createTodo("Gimli1", "A dwarf's task 1", new CustomDate(17, 6, 2023), "1", this.projects[0]);
+        this.createTodo("Gimli2", "A dwarf's task 2", new CustomDate(18, 6, 2023), "2", this.projects[0]);
+        this.createTodo("Gimli3", "A dwarf's task 3", new CustomDate(24, 6, 2023), "0", this.projects[0]);
     }
 
     static createProject(name)
